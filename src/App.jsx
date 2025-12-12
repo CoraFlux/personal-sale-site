@@ -179,7 +179,7 @@ export default function App() {
       <header className="bg-white shadow-sm sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
           <div>
-            <h1 className="text-xl font-bold text-gray-900">Garage Sale 📦</h1>
+            <h1 className="text-xl font-bold text-gray-900">Барахолка на Арсе 📦</h1>
             <p className="text-xs text-gray-500">Распродажа личных вещей</p>
           </div>
           <div className="text-sm font-medium bg-blue-50 text-blue-600 px-3 py-1 rounded-full">
@@ -191,11 +191,11 @@ export default function App() {
       {/* INTRO */}
       <div className="max-w-5xl mx-auto px-4 py-8">
         <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 mb-8">
-          <h2 className="text-2xl font-bold mb-3">Привет! Я переезжаю 👋</h2>
+          <h2 className="text-2xl font-bold mb-3">Привет! У нас скопились вещи, которыми мы не пользуемся 👋</h2>
           <p className="text-gray-600 leading-relaxed max-w-2xl">
-            Поэтому распродаю свои вещи. Все в хорошем или отличном состоянии. 
+            Поэтому мы их распродаем. Все в хорошем или отличном состоянии. 
             Цены указаны окончательные, но если берете несколько вещей — можем обсудить скидку.
-            Пишите в мессенджеры, чтобы забрать.
+            Пишите в мессенджеры, чтобы забрать или забронировать.
           </p>
           <div className="mt-4 flex gap-3">
              <button className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors text-sm font-medium">
