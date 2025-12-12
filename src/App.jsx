@@ -52,8 +52,8 @@ const INITIAL_ITEMS = [
     price: 20,
     currency: '$',
     category: 'kids',
-    // === РАБОЧАЯ ССЫЛКА ДЛЯ КОМБИНЕЗОНА ===
-    image: 'https://github.com/CoraFlux/personal-sale-site/blob/main/public/images/yellow-suit.jpg',
+    // === ИСПРАВЛЕННАЯ, НАДЕЖНАЯ RAW-ССЫЛКА ДЛЯ КОМБИНЕЗОНА ===
+    image: 'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellow-suit.jpg',
     description: 'Цвет: желтый. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
     status: 'available'
   }
@@ -164,7 +164,7 @@ export default function App() {
                 <img 
                   src={item.image} 
                   alt={item.title}
-                  // *** ИЗМЕНЕНИЕ: object-contain, чтобы показать всю картинку ***
+                  // *** object-contain, чтобы показать всю картинку ***
                   className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" 
                   // Обработчик ошибки: если ссылка не работает, показываем заглушку
                   onError={(e) => {
