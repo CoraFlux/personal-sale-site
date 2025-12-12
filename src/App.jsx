@@ -62,8 +62,8 @@ const INITIAL_ITEMS = [
     // *** ИСПРАВЛЕННЫЕ РАБОЧИЕ ССЫЛКИ ДЛЯ КОМБИНЕЗОНА ***
     images: [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellow-suit.jpg',
-      'raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellow-suit.jpg', // Пример 2
-      'raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellow-suit.jpg' // Пример 3
+      'https://placehold.co/600x800/505050/FFFFFF?text=Комбинезон+Спереди', // Пример 2
+      'https://placehold.co/600x800/303030/FFFFFF?text=Комбинезон+Сзади' // Пример 3
     ],
     description: 'Цвет: желтый. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
     status: 'available'
@@ -85,7 +85,7 @@ const CONTACT_INFO = {
   telegram: "username"    // Ваш юзернейм
 };
 
-// --- НОВЫЙ КОМПОНЕНТ ДЛЯ КАРУСЕЛИ ---
+// --- КОМПОНЕНТ ДЛЯ КАРУСЕЛИ ---
 const ImageCarousel = ({ images, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -117,14 +117,14 @@ const ImageCarousel = ({ images, title }) => {
           {/* Навигационные кнопки */}
           <button
             onClick={goToPrev}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/40 text-white rounded-full hover:bg-black/70 transition-colors"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/40 text-white rounded-full hover:bg-black/70 transition-colors z-30"
             aria-label="Предыдущее фото"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={goToNext}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/40 text-white rounded-full hover:bg-black/70 transition-colors"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/40 text-white rounded-full hover:bg-black/70 transition-colors z-30"
             aria-label="Следующее фото"
           >
             <ChevronRight size={24} />
@@ -146,7 +146,7 @@ const ImageCarousel = ({ images, title }) => {
     </div>
   );
 };
-// --- КОНЕЦ НОВОГО КОМПОНЕНТА ---
+// --- КОНЕЦ КОМПОНЕНТА ---
 
 export default function App() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -236,7 +236,7 @@ export default function App() {
             >
               <div className="relative aspect-[3/4] overflow-hidden bg-gray-200">
                 <img 
-                  // *** ИЗМЕНЕНИЕ: Используем ПЕРВОЕ изображение из массива ***
+                  // *** Используем ПЕРВОЕ изображение из массива ***
                   src={item.images[0]} 
                   alt={item.title}
                   className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" 
@@ -306,13 +306,14 @@ export default function App() {
 
       {/* MODAL */}
       {selectedItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-start justify-center p-4 py-4">
           <div 
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setSelectedItem(null)}
           ></div>
           <div 
-            className="relative bg-white rounded-2xl w-full max-w-lg shadow-2xl animate-in fade-in zoom-in duration-200 max-h-[90vh] overflow-y-auto"
+            // *** ИЗМЕНЕНИЕ: Добавили flex-col и overflow-y-auto для прокрутки самой карточки ***
+            className="relative bg-white rounded-2xl w-full max-w-lg shadow-2xl animate-in fade-in zoom-in duration-200 max-h-[90vh] overflow-y-auto flex flex-col"
           >
             <button 
               onClick={() => setSelectedItem(null)}
@@ -324,8 +325,8 @@ export default function App() {
             {/* *** ИЗМЕНЕНИЕ: Вставляем компонент карусели *** */}
             <ImageCarousel images={selectedItem.images} title={selectedItem.title} />
             
-            {/* Контейнер для текста и кнопок (Прокручивается вместе с изображением) */}
-            <div className="p-6 md:p-8">
+            {/* Контейнер для текста и кнопок (Теперь прокручивается вместе с изображением) */}
+            <div className="p-6 md:p-8 flex-shrink-0">
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900 mb-1">{selectedItem.title}</h2>
