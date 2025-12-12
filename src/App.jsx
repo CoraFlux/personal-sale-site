@@ -14,7 +14,7 @@ const INITIAL_ITEMS = [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer01.png',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer02.png'
     ],
-    description: 'Отличное состояние, пользовался пару раз в отпуске. В комплекте китовый объектив и сумка.',
+    description: 'Абсолютно новый, не пользовался. Покупал в США для личного пользования, но планы поменялись и он не пригодился',
     status: 'available' // available, reserved, sold
   },
   {
