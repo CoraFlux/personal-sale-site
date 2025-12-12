@@ -52,7 +52,7 @@ const INITIAL_ITEMS = [
     price: 20,
     currency: '$',
     category: 'kids',
-    // === ИСПРАВЛЕННАЯ, НАДЕЖНАЯ RAW-ССЫЛКА ДЛЯ КОМБИНЕЗОНА ===
+    // *** ИСПРАВЛЕННАЯ РАБОЧАЯ ССЫЛКА (RAW) ***
     image: 'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellow-suit.jpg',
     description: 'Цвет: желтый. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
     status: 'available'
