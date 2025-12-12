@@ -14,7 +14,7 @@ const INITIAL_ITEMS = [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer01.png',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer02.png',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer03.png',
-       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer04.png',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer04.png',
     ],
     description: 'Абсолютно новый, не пользовался. Покупал в США для личного пользования, но планы поменялись и он не пригодился. Работает от сети 110-220 вольт. Если докупить аккумулятор, то можно брать с собой и печатать где угодно.',
     status: 'available' // available, reserved, sold
@@ -122,7 +122,8 @@ const ImageCarousel = ({ images, title }) => {
           {/* Навигационные кнопки */}
           <button
             onClick={goToPrev}
-            // *** ИСПРАВЛЕНИЕ Z-INDEX: Гарантирует, что кнопка будет кликабельной ***
+            // *** ИСПРАВЛЕНИЕ: Добавлены touch events для мобильных устройств ***
+            onTouchStart={goToPrev}
             className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/40 text-white rounded-full hover:bg-black/70 transition-colors z-40"
             aria-label="Предыдущее фото"
           >
@@ -130,7 +131,8 @@ const ImageCarousel = ({ images, title }) => {
           </button>
           <button
             onClick={goToNext}
-            // *** ИСПРАВЛЕНИЕ Z-INDEX: Гарантирует, что кнопка будет кликабельной ***
+            // *** ИСПРАВЛЕНИЕ: Добавлены touch events для мобильных устройств ***
+            onTouchStart={goToNext}
             className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/40 text-white rounded-full hover:bg-black/70 transition-colors z-40"
             aria-label="Следующее фото"
           >
