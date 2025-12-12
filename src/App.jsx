@@ -61,7 +61,7 @@ const INITIAL_ITEMS = [
     category: 'kids',
     // *** ИСПРАВЛЕННЫЕ РАБОЧИЕ ССЫЛКИ ДЛЯ КОМБИНЕЗОНА ***
     images: [
-      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellow-suit.jpg',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellowfront.png',
       'https://placehold.co/600x800/505050/FFFFFF?text=Комбинезон+Спереди', // Пример 2
       'https://placehold.co/600x800/303030/FFFFFF?text=Комбинезон+Сзади' // Пример 3
     ],
