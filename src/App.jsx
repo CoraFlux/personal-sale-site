@@ -5,14 +5,14 @@ import { Camera, Armchair, Shirt, Music, Search, MessageCircle, Send, X, Chevron
 const INITIAL_ITEMS = [
   {
     id: 1,
-    title: 'Sony Alpha a6400',
-    price: 850,
+    title: 'Canon Pixma TR150',
+    price: 350,
     currency: '$',
     category: 'electronics',
     // *** ИЗМЕНЕНИЕ: Теперь это МАССИВ images ***
     images: [
-      'https://placehold.co/600x800/808080/FFFFFF?text=Фото+1+Техника',
-      'https://placehold.co/600x800/606060/FFFFFF?text=Фото+2+Техника'
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer01.png',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer02.png'
     ],
     description: 'Отличное состояние, пользовался пару раз в отпуске. В комплекте китовый объектив и сумка.',
     status: 'available' // available, reserved, sold
