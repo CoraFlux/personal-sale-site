@@ -237,7 +237,10 @@ export default function App() {
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setSelectedItem(null)}
           ></div>
-          <div className="relative bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+          <div 
+            // *** ИЗМЕНЕНИЕ: Добавили ограничение высоты и прокрутку для всего модального окна ***
+            className="relative bg-white rounded-2xl w-full max-w-lg shadow-2xl animate-in fade-in zoom-in duration-200 max-h-[90vh] overflow-y-auto"
+          >
             <button 
               onClick={() => setSelectedItem(null)}
               className="absolute top-4 right-4 p-2 bg-white/80 rounded-full hover:bg-white transition-colors z-10"
@@ -250,7 +253,8 @@ export default function App() {
               <img 
                 src={selectedItem.image} 
                 alt={selectedItem.title} 
-                className="w-full max-h-[80vh] object-contain"
+                // *** ИЗМЕНЕНИЕ: Ограничили высоту изображения до 60% высоты экрана ***
+                className="w-full max-h-[60vh] object-contain"
               />
             </div>
             
