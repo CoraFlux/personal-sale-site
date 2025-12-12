@@ -59,7 +59,7 @@ const INITIAL_ITEMS = [
     price: 20,
     currency: '$',
     category: 'kids',
-    // *** ИСПРАВЛЕННЫЕ РАБОЧИЕ ССЫЛКИ ДЛЯ КОМБИНЕЗОНА ***
+    // *** ИСПРАВЛЕННЫЕ РАБОЧИЕ ССЫЛКИ ДЛЯ КОМБИНЕЗОНА (RAW формат) ***
     images: [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellowfront.png',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellowback.png',
