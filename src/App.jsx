@@ -11,10 +11,10 @@ const INITIAL_ITEMS = [
     category: 'electronics',
     // *** ИЗМЕНЕНИЕ: Теперь это МАССИВ images ***
     images: [
-      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer01.png',
-      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer02.png',
-      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer03.png',
-      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer04.png',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer01.jpg',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer02.jpg',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer03.jpg',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer04.jpg',
     ],
     description: 'Абсолютно новый, не пользовался. Покупал в США для личного пользования, но планы поменялись и он не пригодился. Работает от сети 110-220 вольт. Если докупить аккумулятор, то можно брать с собой и печатать где угодно.',
     status: 'available' // available, reserved, sold
@@ -52,8 +52,8 @@ const INITIAL_ITEMS = [
     currency: '$',
     category: 'kids',
     images: [
-      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/nohoodfront.png',
-      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/nohoodback.png',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/nohoodfront.jpg',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/nohoodback.jpg',
     ],
     description: 'Цвет: голубой. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
     status: 'available'
@@ -66,8 +66,8 @@ const INITIAL_ITEMS = [
     category: 'kids',
     // *** ИСПРАВЛЕННЫЕ РАБОЧИЕ ССЫЛКИ ДЛЯ КОМБИНЕЗОНА (RAW формат) ***
     images: [
-      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellowfront.png',
-      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellowback.png',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellowfront.jpg',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellowback.jpg',
     ],
     description: 'Цвет: желтый. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
     status: 'available'
