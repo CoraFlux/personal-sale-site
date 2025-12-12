@@ -9,8 +9,8 @@ const INITIAL_ITEMS = [
     price: 850,
     currency: '$',
     category: 'electronics',
-    // === ЗАГЛУШКА: Замените на вашу ссылку
-    image: 'https://placehold.co/600x800/808080/FFFFFF?text=Ваше+Фото+Техники',
+    // === СЮДА ВСТАВЬТЕ ПРЯМУЮ ССЫЛКУ НА ВАШЕ ФОТО ===
+    image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=1000',
     description: 'Отличное состояние, пользовался пару раз в отпуске. В комплекте китовый объектив и сумка.',
     status: 'available' // available, reserved, sold
   },
@@ -20,8 +20,8 @@ const INITIAL_ITEMS = [
     price: 45,
     currency: '$',
     category: 'clothing',
-    // === ЗАГЛУШКА: Замените на вашу ссылку
-    image: 'https://placehold.co/600x800/808080/FFFFFF?text=Ваше+Фото+Одежды',
+    // === СЮДА ВСТАВЬТЕ ПРЯМУЮ ССЫЛКУ НА ВАШЕ ФОТО ===
+    image: 'https://images.unsplash.com/photo-1551028919-ac66c5f8b63b?auto=format&fit=crop&q=80&w=1000',
     description: 'Размер M. Натуральная кожа. Покупал год назад, стала мала.',
     status: 'available'
   },
@@ -31,8 +31,9 @@ const INITIAL_ITEMS = [
     price: 120,
     currency: '$',
     category: 'furniture',
-    // === ЗАГЛУШКА: Замените на вашу ссылку
-    image: 'https://placehold.co/600x800/808080/FFFFFF?text=Ваше+Фото+Мебели',
+    // === СЮДА ВСТАВЬТЕ ПРЯМУЮ ССЫЛКУ НА ВАШЕ ФОТО ===
+    image: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&q=80&w=1000',
+    description: 'Отреставрированное кресло 70-х годов. Очень удобное. Самовывоз.',
     status: 'reserved'
   },
   {
@@ -41,22 +42,68 @@ const INITIAL_ITEMS = [
     price: 90,
     currency: '$',
     category: 'electronics',
-    // === ЗАГЛУШКА: Замените на вашу ссылку
-    image: 'https://placehold.co/600x800/808080/FFFFFF?text=Ваше+Фото+Наушников',
+    // === СЮДА ВСТАВЬТЕ ПРЯМУЮ ССЫЛКУ НА ВАШЕ ФОТО ===
+    image: 'https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?auto=format&fit=crop&q=80&w=1000',
     description: 'Полный комплект, коробка. Звук шикарный, батарею держат вечность.',
     status: 'sold'
   },
+  {
+    id: 5,
+    title: 'Кофеварка DeLonghi',
+    price: 60,
+    currency: '$',
+    category: 'home',
+    // === СЮДА ВСТАВЬТЕ ПРЯМУЮ ССЫЛКУ НА ВАШЕ ФОТО ===
+    image: 'https://images.unsplash.com/photo-1520970014086-2208d1579820?auto=format&fit=crop&q=80&w=1000',
+    description: 'Рожковая кофеварка. Нужно почистить от накипи, в остальном работает идеально.',
+    status: 'available'
+  },
+  {
+    id: 6,
+    title: 'Кроссовки New Balance 574',
+    price: 55,
+    currency: '$',
+    category: 'clothing',
+    // === СЮДА ВСТАВЬТЕ ПРЯМУЮ ССЫЛКУ НА ВАШЕ ФОТО ===
+    image: 'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&q=80&w=1000',
+    description: 'Размер US 10. Новые, не подошел размер при заказе онлайн.',
+    status: 'available'
+  },
+  {
+    id: 7,
+    title: 'Детский велосипед',
+    price: 35,
+    currency: '$',
+    category: 'kids',
+    // === СЮДА ВСТАВЬТЕ ПРЯМУЮ ССЫЛКУ НА ВАШЕ ФОТО ===
+    image: 'https://images.unsplash.com/photo-1595246140625-573b715d1128?auto=format&fit=crop&q=80&w=1000',
+    description: 'Велосипед для ребенка 3-5 лет. Есть боковые колеса. Состояние хорошее, есть пара царапин.',
+    status: 'available'
+  },
+  {
+    id: 8,
+    title: 'Набор LEGO Star Wars',
+    price: 25,
+    currency: '$',
+    category: 'kids',
+    // === СЮДА ВСТАВЬТЕ ПРЯМУЮ ССЫЛКУ НА ВАШЕ ФОТО ===
+    image: 'https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?auto=format&fit=crop&q=80&w=1000',
+    description: 'Полный комплект деталей, инструкция есть. Коробка не сохранилась.',
+    status: 'available'
+  },
+  // --- НОВЫЙ ТОВАР: Детский комбинезон ---
   {
     id: 9,
     title: 'Детский комбинезон (Новый)',
     price: 20,
     currency: '$',
     category: 'kids',
-    // === РАБОЧАЯ ССЫЛКА ДЛЯ КОМБИНЕЗОНА ===
+    // === ВАША ПРЯМАЯ ССЫЛКА НА ФОТО ЖЕЛТОГО КОМБИНЕЗОНА ===
     image: 'https://github.com/CoraFlux/personal-sale-site/blob/main/public/images/yellow-suit.jpg',
     description: 'Цвет: желтый. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
     status: 'available'
   }
+  // ------------------------------------------
 ];
 
 const CATEGORIES = [
@@ -65,7 +112,7 @@ const CATEGORIES = [
   { id: 'clothing', label: 'Одежда', icon: Shirt },
   { id: 'kids', label: 'Для детей', icon: Baby },
   { id: 'furniture', label: 'Мебель', icon: Armchair },
-  { id: 'home', label: 'Для дома', icon: Music }, 
+  { id: 'home', label: 'Для дома', icon: Music },
 ];
 
 const CONTACT_INFO = {
@@ -82,7 +129,6 @@ export default function App() {
     ? INITIAL_ITEMS 
     : INITIAL_ITEMS.filter(item => item.category === activeCategory);
 
-  // Функция для генерации ссылки на мессенджер
   const handleContact = (item, method) => {
     const text = `Привет! Меня интересует: ${item.title} за ${item.price}${item.currency}`;
     const encodedText = encodeURIComponent(text);
@@ -160,18 +206,11 @@ export default function App() {
                 item.status === 'sold' ? 'opacity-60 grayscale' : ''
               }`}
             >
-              <div className="relative aspect-[3/4] overflow-hidden bg-gray-200">
+              <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
                 <img 
                   src={item.image} 
                   alt={item.title}
-                  // *** ИЗМЕНЕНИЕ: object-contain, чтобы показать всю картинку ***
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" 
-                  // Обработчик ошибки: если ссылка не работает, показываем заглушку
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = `https://placehold.co/600x800/CCCCCC/333333?text=Ошибка+Загрузки`;
-                    e.target.className = "w-full h-full object-contain";
-                  }}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 {item.status !== 'available' && (
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-[1px]">
@@ -245,12 +284,11 @@ export default function App() {
               <X size={20} />
             </button>
             
-            {/* Модальное окно — адаптивная высота и object-contain */}
-            <div className="w-full bg-gray-100 p-4 flex justify-center items-center">
+            <div className="aspect-video w-full bg-gray-100">
               <img 
                 src={selectedItem.image} 
                 alt={selectedItem.title} 
-                className="w-full max-h-[80vh] object-contain"
+                className="w-full h-full object-cover"
               />
             </div>
             
