@@ -112,7 +112,7 @@ const CATEGORIES = [
   { id: 'clothing', label: 'Одежда', icon: Shirt },
   { id: 'kids', label: 'Для детей', icon: Baby },
   { id: 'furniture', label: 'Мебель', icon: Armchair },
-  { id: 'home', label: 'Для дома', icon: Music }, // Using Music as placeholder for generic home
+  { id: 'home', label: 'Для дома', icon: Music },
 ];
 
 const CONTACT_INFO = {
@@ -129,7 +129,6 @@ export default function App() {
     ? INITIAL_ITEMS 
     : INITIAL_ITEMS.filter(item => item.category === activeCategory);
 
-  // Функция для генерации ссылки на мессенджер
   const handleContact = (item, method) => {
     const text = `Привет! Меня интересует: ${item.title} за ${item.price}${item.currency}`;
     const encodedText = encodeURIComponent(text);
