@@ -26,6 +26,7 @@ const INITIAL_ITEMS = [
     currency: '$',
     category: 'clothing',
     images: [
+      // *** ВНИМАНИЕ: Замените эти заглушки на ваши RAW-ссылки с GitHub ***
       'https://placehold.co/600x800/808080/FFFFFF?text=Фото+1+Одежда',
       'https://placehold.co/600x800/606060/FFFFFF?text=Фото+2+Одежда'
     ],
@@ -39,13 +40,14 @@ const INITIAL_ITEMS = [
     currency: '$',
     category: 'furniture',
     images: [
+      // *** ВНИМАНИЕ: Замените эту заглушку на вашу RAW-ссылку с GitHub ***
       'https://placehold.co/600x800/808080/FFFFFF?text=Фото+1+Мебель'
     ],
     status: 'reserved'
   },
   {
     id: 4,
-    title: 'Детский комбинезон (Новый)',
+    title: 'Детский комбинезон (Голубой)',
     price: 20,
     currency: '$',
     category: 'kids',
@@ -58,7 +60,7 @@ const INITIAL_ITEMS = [
   },
   {
     id: 9,
-    title: 'Детский комбинезон (Новый)',
+    title: 'Детский комбинезон (Желтый)',
     price: 20,
     currency: '$',
     category: 'kids',
@@ -122,8 +124,6 @@ const ImageCarousel = ({ images, title }) => {
           {/* Навигационные кнопки */}
           <button
             onClick={goToPrev}
-            // *** ИСПРАВЛЕНИЕ: Добавлены touch events для мобильных устройств ***
-            onTouchStart={goToPrev}
             className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/40 text-white rounded-full hover:bg-black/70 transition-colors z-40"
             aria-label="Предыдущее фото"
           >
@@ -131,8 +131,6 @@ const ImageCarousel = ({ images, title }) => {
           </button>
           <button
             onClick={goToNext}
-            // *** ИСПРАВЛЕНИЕ: Добавлены touch events для мобильных устройств ***
-            onTouchStart={goToNext}
             className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/40 text-white rounded-full hover:bg-black/70 transition-colors z-40"
             aria-label="Следующее фото"
           >
