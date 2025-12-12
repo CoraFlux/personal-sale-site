@@ -89,13 +89,16 @@ const ImageCarousel = ({ images, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToNext = () => {
+    // Логика перехода: (Текущий индекс + 1) % Количество изображений
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
   const goToPrev = () => {
+    // Логика перехода: (Текущий индекс - 1 + Количество изображений) % Количество изображений
     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
+  // Если изображения нет (ошибка загрузки), показываем заглушку
   const currentImageSrc = images[currentIndex] || 'https://placehold.co/600x600/CCCCCC/333333?text=Нет+Фото';
 
   return (
@@ -116,21 +119,23 @@ const ImageCarousel = ({ images, title }) => {
           {/* Навигационные кнопки */}
           <button
             onClick={goToPrev}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/40 text-white rounded-full hover:bg-black/70 transition-colors z-30"
+            // *** ИСПРАВЛЕНИЕ Z-INDEX: Гарантирует, что кнопка будет кликабельной ***
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/40 text-white rounded-full hover:bg-black/70 transition-colors z-40"
             aria-label="Предыдущее фото"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={goToNext}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/40 text-white rounded-full hover:bg-black/70 transition-colors z-30"
+            // *** ИСПРАВЛЕНИЕ Z-INDEX: Гарантирует, что кнопка будет кликабельной ***
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/40 text-white rounded-full hover:bg-black/70 transition-colors z-40"
             aria-label="Следующее фото"
           >
             <ChevronRight size={24} />
           </button>
           
           {/* Индикаторы (точки) */}
-          <div className="absolute bottom-2 flex space-x-1">
+          <div className="absolute bottom-2 flex space-x-1 z-30">
             {images.map((_, index) => (
               <span
                 key={index}
