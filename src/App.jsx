@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Camera, Armchair, Shirt, Music, Search, MessageCircle, Send, X, ExternalLink, Tag, Baby } from 'lucide-react';
+import { Camera, Armchair, Shirt, Music, Search, MessageCircle, Send, X, ChevronLeft, ChevronRight, Tag, Baby } from 'lucide-react';
 
 // МОКОВЫЕ ДАННЫЕ (Здесь вы будете менять вещи на свои)
 const INITIAL_ITEMS = [
@@ -9,8 +9,11 @@ const INITIAL_ITEMS = [
     price: 850,
     currency: '$',
     category: 'electronics',
-    // === ЗАГЛУШКА: Замените на вашу ссылку
-    image: 'https://placehold.co/600x800/808080/FFFFFF?text=Ваше+Фото+Техники',
+    // *** ИЗМЕНЕНИЕ: Теперь это МАССИВ images ***
+    images: [
+      'https://placehold.co/600x800/808080/FFFFFF?text=Фото+1+Техника',
+      'https://placehold.co/600x800/606060/FFFFFF?text=Фото+2+Техника'
+    ],
     description: 'Отличное состояние, пользовался пару раз в отпуске. В комплекте китовый объектив и сумка.',
     status: 'available' // available, reserved, sold
   },
@@ -20,8 +23,10 @@ const INITIAL_ITEMS = [
     price: 45,
     currency: '$',
     category: 'clothing',
-    // === ЗАГЛУШКА: Замените на вашу ссылку
-    image: 'https://placehold.co/600x800/808080/FFFFFF?text=Ваше+Фото+Одежды',
+    images: [
+      'https://placehold.co/600x800/808080/FFFFFF?text=Фото+1+Одежда',
+      'https://placehold.co/600x800/606060/FFFFFF?text=Фото+2+Одежда'
+    ],
     description: 'Размер M. Натуральная кожа. Покупал год назад, стала мала.',
     status: 'available'
   },
@@ -31,8 +36,9 @@ const INITIAL_ITEMS = [
     price: 120,
     currency: '$',
     category: 'furniture',
-    // === ЗАГЛУШКА: Замените на вашу ссылку
-    image: 'https://placehold.co/600x800/808080/FFFFFF?text=Ваше+Фото+Мебели',
+    images: [
+      'https://placehold.co/600x800/808080/FFFFFF?text=Фото+1+Мебель'
+    ],
     status: 'reserved'
   },
   {
@@ -41,8 +47,9 @@ const INITIAL_ITEMS = [
     price: 90,
     currency: '$',
     category: 'electronics',
-    // === ЗАГЛУШКА: Замените на вашу ссылку
-    image: 'https://placehold.co/600x800/808080/FFFFFF?text=Ваше+Фото+Наушников',
+    images: [
+      'https://placehold.co/600x800/808080/FFFFFF?text=Ваше+Фото+Наушников'
+    ],
     description: 'Полный комплект, коробка. Звук шикарный, батарею держат вечность.',
     status: 'sold'
   },
@@ -52,8 +59,12 @@ const INITIAL_ITEMS = [
     price: 20,
     currency: '$',
     category: 'kids',
-    // *** ИСПРАВЛЕННАЯ РАБОЧАЯ ССЫЛКА (RAW) ***
-    image: 'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellow-suit.jpg',
+    // *** ИСПРАВЛЕННЫЕ РАБОЧИЕ ССЫЛКИ ДЛЯ КОМБИНЕЗОНА ***
+    images: [
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellow-suit.jpg',
+      'https://placehold.co/600x800/505050/FFFFFF?text=Комбинезон+Спереди', // Пример 2
+      'https://placehold.co/600x800/303030/FFFFFF?text=Комбинезон+Сзади' // Пример 3
+    ],
     description: 'Цвет: желтый. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
     status: 'available'
   }
@@ -73,6 +84,69 @@ const CONTACT_INFO = {
   whatsapp: "1234567890", // Ваш номер телефона
   telegram: "username"    // Ваш юзернейм
 };
+
+// --- НОВЫЙ КОМПОНЕНТ ДЛЯ КАРУСЕЛИ ---
+const ImageCarousel = ({ images, title }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const goToPrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  const currentImageSrc = images[currentIndex] || 'https://placehold.co/600x600/CCCCCC/333333?text=Нет+Фото';
+
+  return (
+    <div className="w-full bg-gray-100 p-4 flex flex-col justify-center items-center relative">
+      <img
+        src={currentImageSrc}
+        alt={`${title} - Фото ${currentIndex + 1}`}
+        className="w-full max-h-[60vh] object-contain transition-opacity duration-300"
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = `https://placehold.co/600x800/CCCCCC/333333?text=Ошибка+Загрузки`;
+          e.target.className = "w-full max-h-full object-contain";
+        }}
+      />
+      
+      {images.length > 1 && (
+        <>
+          {/* Навигационные кнопки */}
+          <button
+            onClick={goToPrev}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/40 text-white rounded-full hover:bg-black/70 transition-colors"
+            aria-label="Предыдущее фото"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            onClick={goToNext}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/40 text-white rounded-full hover:bg-black/70 transition-colors"
+            aria-label="Следующее фото"
+          >
+            <ChevronRight size={24} />
+          </button>
+          
+          {/* Индикаторы (точки) */}
+          <div className="absolute bottom-2 flex space-x-1">
+            {images.map((_, index) => (
+              <span
+                key={index}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  index === currentIndex ? 'bg-white shadow-lg' : 'bg-white/50'
+                }`}
+              ></span>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+// --- КОНЕЦ НОВОГО КОМПОНЕНТА ---
 
 export default function App() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -162,9 +236,9 @@ export default function App() {
             >
               <div className="relative aspect-[3/4] overflow-hidden bg-gray-200">
                 <img 
-                  src={item.image} 
+                  // *** ИЗМЕНЕНИЕ: Используем ПЕРВОЕ изображение из массива ***
+                  src={item.images[0]} 
                   alt={item.title}
-                  // *** object-contain, чтобы показать всю картинку ***
                   className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" 
                   // Обработчик ошибки: если ссылка не работает, показываем заглушку
                   onError={(e) => {
@@ -238,26 +312,19 @@ export default function App() {
             onClick={() => setSelectedItem(null)}
           ></div>
           <div 
-            // *** ИЗМЕНЕНИЕ: Добавили ограничение высоты и прокрутку для всего модального окна ***
             className="relative bg-white rounded-2xl w-full max-w-lg shadow-2xl animate-in fade-in zoom-in duration-200 max-h-[90vh] overflow-y-auto"
           >
             <button 
               onClick={() => setSelectedItem(null)}
-              className="absolute top-4 right-4 p-2 bg-white/80 rounded-full hover:bg-white transition-colors z-10"
+              className="absolute top-4 right-4 p-2 bg-white/80 rounded-full hover:bg-white transition-colors z-20"
             >
               <X size={20} />
             </button>
             
-            {/* Модальное окно — адаптивная высота и object-contain */}
-            <div className="w-full bg-gray-100 p-4 flex justify-center items-center">
-              <img 
-                src={selectedItem.image} 
-                alt={selectedItem.title} 
-                // *** ИЗМЕНЕНИЕ: Ограничили высоту изображения до 60% высоты экрана ***
-                className="w-full max-h-[60vh] object-contain"
-              />
-            </div>
+            {/* *** ИЗМЕНЕНИЕ: Вставляем компонент карусели *** */}
+            <ImageCarousel images={selectedItem.images} title={selectedItem.title} />
             
+            {/* Контейнер для текста и кнопок (Прокручивается вместе с изображением) */}
             <div className="p-6 md:p-8">
               <div className="flex justify-between items-start mb-4">
                 <div>
