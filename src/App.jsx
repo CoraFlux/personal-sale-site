@@ -99,7 +99,7 @@ const INITIAL_ITEMS = [
     currency: '$',
     category: 'kids',
     // === ВАША ПРЯМАЯ ССЫЛКА НА ФОТО ЖЕЛТОГО КОМБИНЕЗОНА ===
-    image: 'https://images.unsplash.com/photo-1541819614-b52973163152?auto=format&fit=crop&q=80&w=1000',
+    image: 'https://github.com/CoraFlux/personal-sale-site/blob/70c81978f21296ae15faa8ece439dc95287f7803/public/images/yellow-suit.jpg',
     description: 'Цвет: желтый. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
     status: 'available'
   }
