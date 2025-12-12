@@ -53,21 +53,21 @@ const INITIAL_ITEMS = [
     description: 'Полный комплект, коробка. Звук шикарный, батарею держат вечность.',
     status: 'sold'
   },
-{
-  id: 9,
-  title: 'Детский комбинезон (Новый)',
-  price: 20,
-  currency: '$',
-  category: 'kids',
-  images: [
-    '/images/yellow-suit.jpg',
-    '/images/yellowfront.png',
-    '/images/yellowback.png'
-  ],
-  description: 'Цвет: желтый. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
-  status: 'available'
-}
-
+  {
+    id: 9,
+    title: 'Детский комбинезон (Новый)',
+    price: 20,
+    currency: '$',
+    category: 'kids',
+    // *** ИСПРАВЛЕННЫЕ РАБОЧИЕ ССЫЛКИ ДЛЯ КОМБИНЕЗОНА ***
+    images: [
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellow-suit.jpg',
+      'https://placehold.co/600x800/505050/FFFFFF?text=Комбинезон+Спереди', // Пример 2
+      'https://placehold.co/600x800/303030/FFFFFF?text=Комбинезон+Сзади' // Пример 3
+    ],
+    description: 'Цвет: желтый. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
+    status: 'available'
+  }
 ];
 
 const CATEGORIES = [
