@@ -43,15 +43,16 @@ const INITIAL_ITEMS = [
   },
   {
     id: 4,
-    title: 'Наушники Marshall Major IV',
-    price: 90,
+    title: 'Детский комбинезон (Новый)',
+    price: 20,
     currency: '$',
-    category: 'electronics',
+    category: 'kids',
     images: [
-      'https://placehold.co/600x800/808080/FFFFFF?text=Ваше+Фото+Наушников'
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/nohoodfront.png',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/nohoodback.png',
     ],
-    description: 'Полный комплект, коробка. Звук шикарный, батарею держат вечность.',
-    status: 'sold'
+    description: 'Цвет: голубой. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
+    status: 'available'
   },
   {
     id: 9,
