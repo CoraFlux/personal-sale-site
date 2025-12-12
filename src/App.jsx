@@ -9,7 +9,6 @@ const INITIAL_ITEMS = [
     price: 350,
     currency: '$',
     category: 'electronics',
-    // *** ИЗМЕНЕНИЕ: Теперь это МАССИВ images ***
     images: [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer01.jpg',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer02.jpg',
@@ -21,28 +20,30 @@ const INITIAL_ITEMS = [
   },
   {
     id: 2,
-    title: 'Кожаная куртка Zara',
-    price: 45,
+    title: 'Детский комбинезон (Ярко-розовый)',
+    price: 25,
     currency: '$',
-    category: 'clothing',
+    category: 'kids',
     images: [
-      // *** ВНИМАНИЕ: Замените эти заглушки на ваши RAW-ссылки с GitHub ***
-      'https://placehold.co/600x800/808080/FFFFFF?text=Фото+1+Одежда',
-      'https://placehold.co/600x800/606060/FFFFFF?text=Фото+2+Одежда'
+      // *** ВНИМАНИЕ: Замените эти заглушки на ваши RAW-ссылки с GitHub (Фото 1 и 2) ***
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/brightpinkfront.jpg',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/brightpinkback.jpg',
     ],
-    description: 'Размер M. Натуральная кожа. Покупал год назад, стала мала.',
+    description: 'Цвет: ярко-розовый. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
     status: 'available'
   },
   {
     id: 3,
-    title: 'Винтажное кресло',
-    price: 120,
+    title: 'Детский комбинезон (Розовый)',
+    price: 20,
     currency: '$',
-    category: 'furniture',
+    category: 'kids',
     images: [
       // *** ВНИМАНИЕ: Замените эту заглушку на вашу RAW-ссылку с GitHub ***
-      'https://placehold.co/600x800/808080/FFFFFF?text=Фото+1+Мебель'
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/pinkfront.jpg',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/pinkback.jpg',
     ],
+    description: 'Цвет: светло-розовый. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
     status: 'reserved'
   },
   {
@@ -64,7 +65,6 @@ const INITIAL_ITEMS = [
     price: 20,
     currency: '$',
     category: 'kids',
-    // *** ИСПРАВЛЕННЫЕ РАБОЧИЕ ССЫЛКИ ДЛЯ КОМБИНЕЗОНА (RAW формат) ***
     images: [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellowfront.jpg',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellowback.jpg',
@@ -186,7 +186,7 @@ export default function App() {
             <p className="text-xs text-gray-500">Распродажа личных вещей</p>
           </div>
           <div className="text-sm font-medium bg-blue-50 text-blue-600 px-3 py-1 rounded-full">
-            Локация: Центр
+            Локация: Лас Канитас
           </div>
         </div>
       </header>
