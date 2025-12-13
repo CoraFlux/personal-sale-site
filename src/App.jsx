@@ -110,8 +110,8 @@ const CATEGORIES = [
 
 const CONTACT_INFO = {
   name: "Алекс",
-  whatsapp: "1234567890", // Ваш номер телефона
-  telegram: "username"    // Ваш юзернейм
+  whatsapp: "91171559381", // Ваш номер телефона
+  telegram: "@Anna_Chyu"    // Ваш юзернейм
 };
 
 
