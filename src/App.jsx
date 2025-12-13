@@ -85,6 +85,19 @@ const INITIAL_ITEMS = [
     description: 'Цвет: голубой. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
     status: 'available'
   },
+   {
+    id: 5,
+    title: 'Детский комбинезон (Голубой)',
+    price: 20,
+    currency: '$',
+    category: 'kids',
+    images: [
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/beigefront.jpg',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/beigeback.jpg',
+    ],
+    description: 'Цвет: голубой. Возраст: 0-1 года. Идеальное состояние, ни разу не носили.',
+    status: 'available'
+  },
   {
     id: 9,
     title: 'Детский комбинезон (Желтый)',
