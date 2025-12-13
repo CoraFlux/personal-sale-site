@@ -82,7 +82,7 @@ const INITIAL_ITEMS = [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/nohoodfront.jpg',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/nohoodback.jpg',
     ],
-    description: 'Цвет: голубой. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
+    description: 'Цвет: голубой. Возраст: 6-8 лет. Идеальное состояние, ни разу не носили.',
     status: 'available'
   },
    {
