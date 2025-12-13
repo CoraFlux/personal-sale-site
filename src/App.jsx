@@ -27,7 +27,6 @@ const INITIAL_ITEMS = [
     currency: '$',
     category: 'kids',
     images: [
-      // *** ВНИМАНИЕ: Замените эти заглушки на ваши RAW-ссылки с GitHub (Фото 1 и 2) ***
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/brightpinkfront.jpg',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/brightpinkback.jpg',
     ],
@@ -41,7 +40,6 @@ const INITIAL_ITEMS = [
     currency: '$',
     category: 'kids',
     images: [
-      // *** ВНИМАНИЕ: Замените эту заглушку на вашу RAW-ссылку с GitHub ***
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/pinkfront.jpg',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/pinkback.jpg',
     ],
@@ -91,21 +89,85 @@ const CONTACT_INFO = {
   telegram: "username"    // Ваш юзернейм
 };
 
-// --- КОМПОНЕНТ ДЛЯ КАРУСЕЛИ ---
-const ImageCarousel = ({ images, title }) => {
+
+// --- КОМПОНЕНТ КАРУСЕЛИ ДЛЯ ВИТРИНЫ ---
+const ShelfCarousel = ({ images, title, currentIndex, onPrev, onNext, status, price, currency }) => {
+  const currentImageSrc = images[currentIndex] || 'https://placehold.co/600x600/CCCCCC/333333?text=Нет+Фото';
+
+  // Предотвращаем клик по карточке, если клик был по кнопке
+  const handleButtonClick = (e, action) => {
+    e.stopPropagation(); // Остановка всплытия события, чтобы не открывалось модальное окно
+    action();
+  };
+
+  return (
+    <div className="relative aspect-[3/4] overflow-hidden bg-gray-200">
+      <img 
+        src={currentImageSrc} 
+        alt={`${title} - Фото ${currentIndex + 1}`}
+        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" 
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = `https://placehold.co/600x800/CCCCCC/333333?text=Ошибка+Загрузки`;
+          e.target.className = "w-full h-full object-contain";
+        }}
+      />
+
+      {status !== 'available' && (
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-[1px]">
+          <span className={`px-4 py-1 rounded-full text-white font-bold uppercase tracking-wider text-sm ${
+            status === 'sold' ? 'bg-red-500' : 'bg-yellow-500'
+          }`}>
+            {status === 'sold' ? 'Продано' : 'Бронь'}
+          </span>
+        </div>
+      )}
+
+      {status === 'available' && (
+        <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full font-bold text-gray-900 shadow-sm">
+          {price}{currency}
+        </div>
+      )}
+
+      {images.length > 1 && (
+        <>
+          {/* Кнопка "Назад" */}
+          <button
+            onClick={(e) => handleButtonClick(e, onPrev)}
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 p-1.5 bg-black/40 text-white rounded-full hover:bg-black/70 transition-colors z-40"
+            aria-label="Предыдущее фото"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          
+          {/* Кнопка "Вперед" */}
+          <button
+            onClick={(e) => handleButtonClick(e, onNext)}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1.5 bg-black/40 text-white rounded-full hover:bg-black/70 transition-colors z-40"
+            aria-label="Следующее фото"
+          >
+            <ChevronRight size={20} />
+          </button>
+        </>
+      )}
+    </div>
+  );
+};
+// --- КОНЕЦ КОМПОНЕНТА КАРУСЕЛИ ДЛЯ ВИТРИНЫ ---
+
+
+// --- КОМПОНЕНТ КАРУСЕЛИ ДЛЯ МОДАЛЬНОГО ОКНА ---
+const ModalCarousel = ({ images, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToNext = () => {
-    // Логика перехода: (Текущий индекс + 1) % Количество изображений
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
   const goToPrev = () => {
-    // Логика перехода: (Текущий индекс - 1 + Количество изображений) % Количество изображений
     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
-  // Если изображения нет (ошибка загрузки), показываем заглушку
   const currentImageSrc = images[currentIndex] || 'https://placehold.co/600x600/CCCCCC/333333?text=Нет+Фото';
 
   return (
@@ -155,11 +217,34 @@ const ImageCarousel = ({ images, title }) => {
     </div>
   );
 };
-// --- КОНЕЦ КОМПОНЕНТА ---
+// --- КОНЕЦ КОМПОНЕНТА КАРУСЕЛИ ДЛЯ МОДАЛЬНОГО ОКНА ---
+
 
 export default function App() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedItem, setSelectedItem] = useState(null);
+  // *** НОВЫЙ СТЕЙТ: Хранит текущий индекс изображения для каждой карточки на витрине ***
+  const [shelfImageIndex, setShelfImageIndex] = useState({});
+
+  // Логика переключения изображения на витрине
+  const handleShelfNext = (itemId) => {
+    const item = INITIAL_ITEMS.find(i => i.id === itemId);
+    if (!item) return;
+    
+    const currentIndex = shelfImageIndex[itemId] || 0;
+    const nextIndex = (currentIndex + 1) % item.images.length;
+    setShelfImageIndex(prev => ({ ...prev, [itemId]: nextIndex }));
+  };
+
+  const handleShelfPrev = (itemId) => {
+    const item = INITIAL_ITEMS.find(i => i.id === itemId);
+    if (!item) return;
+
+    const currentIndex = shelfImageIndex[itemId] || 0;
+    const prevIndex = (currentIndex - 1 + item.images.length) % item.images.length;
+    setShelfImageIndex(prev => ({ ...prev, [itemId]: prevIndex }));
+  };
+
 
   const filteredItems = activeCategory === 'all' 
     ? INITIAL_ITEMS 
@@ -238,40 +323,26 @@ export default function App() {
           {filteredItems.map(item => (
             <div 
               key={item.id} 
+              // Клик по карточке открывает модальное окно
               onClick={() => setSelectedItem(item)}
               className={`bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer group hover:shadow-lg transition-all duration-300 ${
                 item.status === 'sold' ? 'opacity-60 grayscale' : ''
               }`}
             >
-              <div className="relative aspect-[3/4] overflow-hidden bg-gray-200">
-                <img 
-                  // *** Используем ПЕРВОЕ изображение из массива ***
-                  src={item.images[0]} 
-                  alt={item.title}
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" 
-                  // Обработчик ошибки: если ссылка не работает, показываем заглушку
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = `https://placehold.co/600x800/CCCCCC/333333?text=Ошибка+Загрузки`;
-                    e.target.className = "w-full h-full object-contain";
-                  }}
-                />
-                {item.status !== 'available' && (
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-[1px]">
-                    <span className={`px-4 py-1 rounded-full text-white font-bold uppercase tracking-wider text-sm ${
-                      item.status === 'sold' ? 'bg-red-500' : 'bg-yellow-500'
-                    }`}>
-                      {item.status === 'sold' ? 'Продано' : 'Бронь'}
-                    </span>
-                  </div>
-                )}
-                {item.status === 'available' && (
-                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full font-bold text-gray-900 shadow-sm">
-                    {item.price}{item.currency}
-                  </div>
-                )}
-              </div>
               
+              {/* *** ИЗМЕНЕНИЕ: Вставляем карусель прямо в карточку *** */}
+              <ShelfCarousel
+                images={item.images}
+                title={item.title}
+                currentIndex={shelfImageIndex[item.id] || 0}
+                onPrev={() => handleShelfPrev(item.id)}
+                onNext={() => handleShelfNext(item.id)}
+                status={item.status}
+                price={item.price}
+                currency={item.currency}
+              />
+              {/* *** КОНЕЦ КАРУСЕЛИ В КАРТОЧКЕ *** */}
+
               <div className="p-4">
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="font-bold text-lg text-gray-900 leading-tight group-hover:text-blue-600 transition-colors">
@@ -321,7 +392,6 @@ export default function App() {
             onClick={() => setSelectedItem(null)}
           ></div>
           <div 
-            // *** ИЗМЕНЕНИЕ: Добавили flex-col и overflow-y-auto для прокрутки самой карточки ***
             className="relative bg-white rounded-2xl w-full max-w-lg shadow-2xl animate-in fade-in zoom-in duration-200 max-h-[90vh] overflow-y-auto flex flex-col"
           >
             <button 
@@ -331,10 +401,10 @@ export default function App() {
               <X size={20} />
             </button>
             
-            {/* *** ИЗМЕНЕНИЕ: Вставляем компонент карусели *** */}
-            <ImageCarousel images={selectedItem.images} title={selectedItem.title} />
+            {/* *** Используем карусель для модального окна *** */}
+            <ModalCarousel images={selectedItem.images} title={selectedItem.title} />
             
-            {/* Контейнер для текста и кнопок (Теперь прокручивается вместе с изображением) */}
+            {/* Контейнер для текста и кнопок */}
             <div className="p-6 md:p-8 flex-shrink-0">
               <div className="flex justify-between items-start mb-4">
                 <div>
