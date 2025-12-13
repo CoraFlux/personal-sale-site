@@ -16,6 +16,8 @@ const INITIAL_ITEMS = [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer04.jpg',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer05.jpg',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer06.jpg',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer07.jpg',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer08.jpg',
     ],
     description: `Абсолютно новый, не пользовался. Картриджи в комплекте, не вскрытые.
       Покупал в США для личного пользования, но планы поменялись и он не пригодился. 
