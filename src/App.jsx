@@ -14,6 +14,8 @@ const INITIAL_ITEMS = [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer02.jpg',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer03.jpg',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer04.jpg',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer05.jpg',
+      'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer06.jpg',
     ],
     description: 'Абсолютно новый, не пользовался. Покупал в США для личного пользования, но планы поменялись и он не пригодился. Работает от сети 110-220 вольт. Если докупить аккумулятор, то можно брать с собой и печатать где угодно.',
     status: 'available' // available, reserved, sold
