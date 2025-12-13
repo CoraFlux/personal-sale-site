@@ -17,7 +17,6 @@ const INITIAL_ITEMS = [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer05.jpg',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer06.jpg',
     ],
-    // *** ИЗМЕНЕНИЕ: Добавлены маркеры Markdown для форматирования в модальном окне ***
     description: `Абсолютно новый, не пользовался. Картриджи в комплекте, не вскрытые.
       Покупал в США для личного пользования, но планы поменялись и он не пригодился. 
       Работает от сети 110-220 вольт. Легкий (всего 2 кг), занимает мало места. 
@@ -109,9 +108,9 @@ const CATEGORIES = [
 ];
 
 const CONTACT_INFO = {
-  name: "Алекс",
-  whatsapp: "91171559381", // Ваш номер телефона
-  telegram: "Anna_Chyu"    // Ваш юзернейм
+  name: "Анна",
+  whatsapp: "91171559381",
+  telegram: "Anna_Chyu"
 };
 
 
@@ -329,8 +328,10 @@ export default function App() {
     const encodedText = encodeURIComponent(text);
     
     if (method === 'whatsapp') {
+      // Используем https://wa.me/
       window.open(`https://wa.me/${CONTACT_INFO.whatsapp}?text=${encodedText}`, '_blank');
     } else if (method === 'telegram') {
+      // Используем https://t.me/
       window.open(`https://t.me/${CONTACT_INFO.telegram}?text=${encodedText}`, '_blank');
     }
   };
