@@ -111,7 +111,7 @@ const CATEGORIES = [
 const CONTACT_INFO = {
   name: "Алекс",
   whatsapp: "91171559381", // Ваш номер телефона
-  telegram: "@Anna_Chyu"    // Ваш юзернейм
+  telegram: "Anna_Chyu"    // Ваш юзернейм
 };
 
 
