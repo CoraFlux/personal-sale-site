@@ -17,29 +17,32 @@ const INITIAL_ITEMS = [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer05.jpg',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/printer06.jpg',
     ],
-    // *** ИСПРАВЛЕНИЕ: Заменены одинарные кавычки на обратные кавычки для многострочного текста ***
+    // *** ИЗМЕНЕНИЕ: Добавлены маркеры Markdown для форматирования в модальном окне ***
     description: `Абсолютно новый, не пользовался. Картриджи в комплекте, не вскрытые.
       Покупал в США для личного пользования, но планы поменялись и он не пригодился. 
       Работает от сети 110-220 вольт. Легкий (всего 2 кг), занимает мало места. 
       Если докупить аккумулятор, то можно брать с собой и печатать где угодно.
     
-      Основные характеристики:
-      Технология печати: Термическая струйная.
-      Разрешение печати: До 4800 x 1200 dpi.
-      Скорость печати: 9 стр/мин (Ч/Б), 5.5 стр/мин (Цвет.).
-      Формат печати: A4.
-      Печать без полей: Да (A4, LTR, 4x6", 5x7", 8x10", 5x5", 3.5x3.5").
-      Картриджи: 2 картриджа (PGI-35 BK, CLI-36 C/M/Y).
-      Мобильность: Встроенный аккумулятор (заряжается через USB-C) и возможность зарядки от USB-C в автомобиле. 
-      Возможности подключения и управления:
-      Интерфейсы: Wi-Fi, USB.
-      Мобильная печать: Canon PRINT app, Apple AirPrint, Mopria, PIXMA Cloud Link, Wireless Direct.
-      Дисплей: 1.44-дюймовый OLED-дисплей для удобного управления. 
-      Дополнительно:
-      Печать фотографий, включая печать без полей.
-      Сохранение до 5 пользовательских шаблонов для быстрой печати. 
-      Идеально подходит для:
-      Людей, которым нужен принтер для печати в дороге, в офисе или дома, с возможностью работы от аккумулятора. `,
+      **Основные характеристики:**
+      - Технология печати: Термическая струйная.
+      - Разрешение печати: До 4800 x 1200 dpi.
+      - Скорость печати: 9 стр/мин (Ч/Б), 5.5 стр/мин (Цвет.).
+      - Формат печати: A4.
+      - Печать без полей: Да (A4, LTR, 4x6", 5x7", 8x10", 5x5", 3.5x3.5").
+      - Картриджи: 2 картриджа (PGI-35 BK, CLI-36 C/M/Y).
+      - Мобильность: Встроенный аккумулятор (заряжается через USB-C) и возможность зарядки от USB-C в автомобиле. 
+      
+      **Возможности подключения и управления:**
+      - Интерфейсы: Wi-Fi, USB.
+      - Мобильная печать: Canon PRINT app, Apple AirPrint, Mopria, PIXMA Cloud Link, Wireless Direct.
+      - Дисплей: 1.44-дюймовый OLED-дисплей для удобного управления. 
+      
+      **Дополнительно:**
+      - Печать фотографий, включая печать без полей.
+      - Сохранение до 5 пользовательских шаблонов для быстрой печати. 
+      
+      **Идеально подходит для:**
+      Людей, которым нужен принтер для печати в дороге, в офисе или дома, с возможностью работы от аккумулятора.`,
     status: 'available' // available, reserved, sold
   },
   {
@@ -109,6 +112,54 @@ const CONTACT_INFO = {
   name: "Алекс",
   whatsapp: "1234567890", // Ваш номер телефона
   telegram: "username"    // Ваш юзернейм
+};
+
+
+// --- Хелпер для форматирования текста в модальном окне ---
+const renderFormattedDescription = (text) => {
+  if (!text) return null;
+
+  // 1. Разделяем текст на строки, удаляем лишние пробелы и пустые строки
+  const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+  let content = [];
+  let currentList = null;
+
+  lines.forEach((line, index) => {
+    // Проверяем на заголовок (текст, окруженный **), например: **Основные характеристики:**
+    if (line.startsWith('**') && line.endsWith('**')) {
+      // Закрываем предыдущий список, если он был
+      if (currentList) {
+        content.push(<ul key={`ul-${index - 1}`} className="list-disc pl-5 mb-4">{currentList}</ul>);
+        currentList = null;
+      }
+      const headingText = line.slice(2, -2);
+      content.push(<h3 key={`h3-${index}`} className="text-lg font-semibold mt-4 mb-2">{headingText}</h3>);
+    } 
+    // Проверяем на элемент списка
+    else if (line.startsWith('- ')) {
+      const listItem = <li key={`li-${index}`} className="text-gray-600 mb-1">{line.substring(2).trim()}</li>;
+      if (!currentList) {
+        currentList = [];
+      }
+      currentList.push(listItem);
+    } 
+    // Всё остальное - обычный параграф
+    else {
+      // Закрываем предыдущий список, если он был
+      if (currentList) {
+        content.push(<ul key={`ul-${index - 1}`} className="list-disc pl-5 mb-4">{currentList}</ul>);
+        currentList = null;
+      }
+      content.push(<p key={`p-${index}`} className="text-gray-600 leading-relaxed mb-4">{line}</p>);
+    }
+  });
+
+  // Добавляем последний список, если он не был закрыт
+  if (currentList) {
+    content.push(<ul key={`ul-final`} className="list-disc pl-5 mb-4">{currentList}</ul>);
+  }
+
+  return <div>{content}</div>;
 };
 
 
@@ -377,6 +428,7 @@ export default function App() {
                    </span>
                 </div>
                 <p className="text-gray-500 text-sm line-clamp-2">
+                  {/* Описание для витрины должно быть простым и обрезанным */}
                   {item.description}
                 </p>
               </div>
@@ -441,10 +493,11 @@ export default function App() {
                 </div>
               </div>
               
-              <p className="text-gray-600 leading-relaxed mb-8">
-                {selectedItem.description}
-              </p>
-
+              {/* *** ИЗМЕНЕНИЕ: Вставляем отформатированный текст *** */}
+              <div className="text-gray-600 leading-relaxed mb-8">
+                {renderFormattedDescription(selectedItem.description)}
+              </div>
+              
               {selectedItem.status === 'available' ? (
                 <div className="grid grid-cols-2 gap-3">
                   <button 
