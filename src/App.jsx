@@ -391,7 +391,7 @@ export default function App() {
           })}
         </div>
 
-        /* GRID */
+        
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredItems.map(item => (
             <div 
@@ -458,7 +458,7 @@ export default function App() {
         <p>© 2025 Частная продажа</p>
       </footer>
 
-      {/* MODAL */}
+      
       {selectedItem && (
         <div className="fixed inset-0 z-50 flex items-start justify-center p-4 py-4">
           <div 
