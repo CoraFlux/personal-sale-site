@@ -70,7 +70,7 @@ const INITIAL_ITEMS = [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/pinkback.jpg',
     ],
     description: 'Цвет: светло-розовый. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
-    status: 'reserved'
+    status: 'available'
   },
   {
     id: 4,
