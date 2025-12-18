@@ -56,20 +56,20 @@ const INITIAL_ITEMS = [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/brightpinkfront.jpg',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/brightpinkback.jpg',
     ],
-    description: 'Цвет: ярко-розовый. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
+    description: 'Цвет: ярко-розовый. Размеры: 74, 104. Идеальное состояние, ни разу не носили.',
     status: 'available'
   },
   {
     id: 3,
     title: 'Детский комбинезон (Розовый)',
-    price: 20,
+    price: 25,
     currency: '$',
     category: 'kids',
     images: [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/pinkfront.jpg',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/pinkback.jpg',
     ],
-    description: 'Цвет: светло-розовый. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
+    description: 'Цвет: светло-розовый. Размеры: 62, 68, 80, 86, 122. Идеальное состояние, ни разу не носили.',
     status: 'available'
   },
   {
@@ -82,33 +82,33 @@ const INITIAL_ITEMS = [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/nohoodfront.jpg',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/nohoodback.jpg',
     ],
-    description: 'Цвет: голубой. Возраст: 6-8 лет. Идеальное состояние, ни разу не носили.',
+    description: 'Цвет: голубой. Без капюшона. Идеальное состояние, ни разу не носили.',
     status: 'available'
   },
    {
     id: 5,
     title: 'Детский комбинезон (Голубой)',
-    price: 20,
+    price: 25,
     currency: '$',
     category: 'kids',
     images: [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/beigefront.jpg',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/beigeback.jpg',
     ],
-    description: 'Цвет: голубой. Возраст: 0-1 года. Идеальное состояние, ни разу не носили.',
+    description: 'Цвет: голубой. Размеры: 62, 68, 74, 80, 92, 110, 122. Идеальное состояние, ни разу не носили.',
     status: 'available'
   },
   {
     id: 9,
     title: 'Детский комбинезон (Желтый)',
-    price: 20,
+    price: 25,
     currency: '$',
     category: 'kids',
     images: [
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellowfront.jpg',
       'https://raw.githubusercontent.com/CoraFlux/personal-sale-site/main/public/images/yellowback.jpg',
     ],
-    description: 'Цвет: желтый. Возраст: 2-3 года. Идеальное состояние, ни разу не носили.',
+    description: 'Цвет: желтый. Размер: 86. Идеальное состояние, ни разу не носили.',
     status: 'available'
   }
 ];
